@@ -30,3 +30,20 @@ print(review_pick)
 to_words = review_pick.split()    # 'Series' object has no attribute 'split' 이슈 발생 -> join으로 공백처리하여 문장 연결하니까 에러 해결 
 print(to_words)
 print(len(to_words))
+
+# 전체 리뷰 데이터 불용어 제거
+words = [w for w in to_words if not w in stop_str]
+print(len(words))   # 개수 줄어든 것 확인
+print(words)
+
+# 불용어 리스트로 만들어서 데이터프레임으로 만들기
+clean_reviews = []
+
+for word in words:
+    clean_reviews.append(word)
+
+clean_df = pd.DataFrame({'review':clean_reviews})
+clean_df.head(20)
+
+
+clean_reviews
