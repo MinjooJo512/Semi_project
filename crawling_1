@@ -27,7 +27,7 @@ time.sleep(1)
 
 # 2점, 1점 탭 클릭
 two_point = driver.find_element(By.CSS_SELECTOR, 'ul#searchPoint #point_type1_5')      # 2점 탭
-two_point.click()    
+two_point.click()    # Message: element not interactable 에러 뜸
 print(two_point)
 time.sleep(1)
 driver.find_element(By.CSS_SELECTOR, 'div.popCont #point_type1_6').click()      # 1점 탭
