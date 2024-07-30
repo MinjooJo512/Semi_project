@@ -1,0 +1,27 @@
+# 한국어 불용어 리스트 파일 불러오기
+file = open('Korean Stopwords.txt', 'r', encoding='utf-8')
+stop_str = file.read() 
+print(f'파일 내용 : {stop_str}')
+file.close()
+
+# 문장 꺼내기
+review_pick = review['리뷰'][120]
+review_pick
+
+# 문장을 단어로 쪼개기
+to_words = review_pick.split()
+print(to_words)
+print(len(to_words))
+
+# 불용어 아닌 단어들만 추출 (불용어 제거)
+words = [w for w in to_words if not w in stop_str]
+print(words)
+print(len(words))
+
+# 하나씩 꺼내면 됐으니까, 전체 리뷰 들고오기
+review_pick = review.loc[:, '리뷰'].to_list()
+print(review_pick)
+
+to_words = review_pick.split()    # 'Series' object has no attribute 'split' 이슈 발생
+print(to_words)
+print(len(to_words))
