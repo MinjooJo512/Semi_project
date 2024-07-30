@@ -1,0 +1,40 @@
+# 평점 1~2점 부정 리뷰 크롤링
+import pandas as pd
+import time
+from tqdm import tqdm_notebook
+import warnings
+warnings.filterwarnings('ignore')
+from selenium.common.exceptions import NoSuchElementException
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.get(url)
+
+# 데이터 프레임 생성
+df_review_cos1 = pd.DataFrame(columns=['date', 'rate', 'id', 'select_1_title', 'select_1_content', 'select_2_title', 'select_2_content', 'select_3_title', 'select_3_content', 'txt'])
+df_review_cos1
+
+# 리뷰 탭 클릭
+review_tab = driver.find_element(By.CSS_SELECTOR, 'a.goods_reputation')
+review_tab.click()
+time.sleep(1)
+
+# 리뷰검색필터 탭 클릭
+review_tab = driver.find_element(By.CSS_SELECTOR, 'div#searchType button.btnOption')
+review_tab.click()
+time.sleep(1)
+
+# 2점, 1점 탭 클릭
+two_point = driver.find_element(By.CSS_SELECTOR, 'ul#searchPoint #point_type1_5')      # 2점 탭
+two_point.click()    
+print(two_point)
+time.sleep(1)
+driver.find_element(By.CSS_SELECTOR, 'div.popCont #point_type1_6').click()      # 1점 탭
+time.sleep(1)
+
+# 적용 버튼 클릭
+driver.find_element(By.CSS_SELECTOR, 'div.area1sButton > button.btnClose').click()
+time.sleep(1)
+print("부정 리뷰 선택 완료")
+driver.quit()
