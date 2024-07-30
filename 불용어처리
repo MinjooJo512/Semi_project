@@ -22,6 +22,11 @@ print(len(words))
 review_pick = review.loc[:, '리뷰'].to_list()
 print(review_pick)
 
-to_words = review_pick.split()    # 'Series' object has no attribute 'split' 이슈 발생
+# 이슈 해결 위해 join 사용
+# 전체 리뷰 문장을 단어로 바꾸기
+review_pick = ' '.join(review_pick)   # 따옴표 떼고 공백으로 이어붙이기
+print(review_pick)
+
+to_words = review_pick.split()    # 'Series' object has no attribute 'split' 이슈 발생 -> join으로 공백처리하여 문장 연결하니까 에러 해결 
 print(to_words)
 print(len(to_words))
