@@ -1,3 +1,9 @@
+review = pd.read_csv('data_all(긍정).csv', encoding='utf-8')
+review.tail(20)
+
+# review = pd.read_csv('data_all(부정).csv', encoding='utf-8')
+# review.tail(20)
+
 # 한국어 불용어 리스트 파일 불러오기
 file = open('Korean Stopwords.txt', 'r', encoding='utf-8')
 stop_str = file.read() 
@@ -36,14 +42,16 @@ words = [w for w in to_words if not w in stop_str]
 print(len(words))   # 개수 줄어든 것 확인
 print(words)
 
-# 불용어 리스트로 만들어서 데이터프레임으로 만들기
+# 데이터프레임으로 만들기
 clean_reviews = []
 
 for word in words:
     clean_reviews.append(word)
 
+clean_reviews
+
 clean_df = pd.DataFrame({'review':clean_reviews})
 clean_df.head(20)
 
-
-clean_reviews
+clean_df.to_csv('긍정_불용어제거.csv', index=False)
+# clean_df.to_csv('부정_불용어제거.csv', index=False)
