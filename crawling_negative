@@ -95,6 +95,6 @@ def review_crawling(df, page_num):
         print(f'{current_page}페이지 크롤링 완료')
 
 review_crawling(df_review_cos1, 38)
-df_review_cos1.to_csv('C:/semi/부정리뷰.csv', index=False, encoding='utf-8')
+df_review_cos1.to_csv('C:/semi_project/부정리뷰.csv', index=False, encoding='utf-8')
 print("부정 리뷰 크롤링 완료 및 데이터 저장")
 driver.quit()
