@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # 제품 상세페이지 url
-# url = "url_링크"
+url = "url_링크"
 
 driver = webdriver.Chrome()
 driver.get(url)
